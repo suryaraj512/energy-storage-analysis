@@ -1,0 +1,358 @@
+Private Declare Sub Sleep Lib "kernel32" (ByVal dwmilliseconds As Long)
+Dim a, b, c, d, e, f, g, h As Integer
+Dim buf  As String
+Dim Out2 As Integer
+Dim DOut As String
+Dim sx, sy, ex, ey, sx1, sy1, ex1, ey1 As Integer
+Dim INTKVA, INSTKVA As Single
+
+Private Sub Form_Load()
+MSComm1.PortOpen = True
+MSComm1.Output = "{27}"
+Sleep 30
+ MSComm1.Output = "{1D00}"
+    Sleep 30
+    MSComm1.Output = "{5DFF}"
+    Sleep 30
+
+sx = Line1.X1
+sy = Line2.Y2
+
+sx1 = Line3.X1
+sy1 = Line4.Y2
+
+End Sub
+Private Sub Timer1_Timer()
+a = Analog(5) / 20
+b = Analog(0)
+c = Analog(7) / 10
+Text2.Text = c
+Text1.Text = Round(a)
+Text4.Text = c
+
+ If Text1.Text < 5 Then
+Picture1.Picture = LoadPicture("C:\Users\Admin\Desktop\PAVAI IT FINAL TESTING\ENERGY STORAGE ANALYSIS\sun11.jpg")
+ElseIf Text1.Text > 6 < 8 Then
+Picture1.Picture = LoadPicture("C:\Users\Admin\Desktop\PAVAI IT FINAL TESTING\ENERGY STORAGE ANALYSIS\sun10.jpg")
+
+
+ElseIf Text1.Text > 9 < 10 Then
+
+Picture1.Picture = LoadPicture("C:\Users\Admin\Desktop\PAVAI IT FINAL TESTING\ENERGY STORAGE ANALYSIS\sun9.jpg")
+ElseIf Text1.Text > 11 < 16 Then
+Picture1.Picture = LoadPicture("C:\Users\Admin\Desktop\PAVAI IT FINAL TESTING\ENERGY STORAGE ANALYSIS\sun7.jpg")
+Else: Picture1.Picture = LoadPicture("C:\Users\Admin\Desktop\PAVAI IT FINAL TESTING\ENERGY STORAGE ANALYSIS\sun6.jpg")
+End If
+
+'ElseIf Text1.Text > 6 < 10 Then
+'Picture1.Picture = LoadPicture("C:\Users\Admin\Desktop\PAVAI IT FINAL TESTING\ENERGY STORAGE ANALYSIS\sun6.jpg")
+'  End If
+
+  If Text4.Text > 10 Then
+Picture2.Picture = LoadPicture("C:\Users\Admin\Desktop\PAVAI IT FINAL TESTING\ENERGY STORAGE ANALYSIS\vertical1 (1).jpg")
+Sleep 30
+Picture2.Picture = LoadPicture("C:\Users\Admin\Desktop\PAVAI IT FINAL TESTING\ENERGY STORAGE ANALYSIS\vertical1 (2).jpg")
+Sleep 30
+Picture2.Picture = LoadPicture("C:\Users\Admin\Desktop\PAVAI IT FINAL TESTING\ENERGY STORAGE ANALYSIS\vertical1 (3).jpg")
+Sleep 30
+Picture2.Picture = LoadPicture("C:\Users\Admin\Desktop\PAVAI IT FINAL TESTING\ENERGY STORAGE ANALYSIS\vertical1 (4).jpg")
+Sleep 30
+Picture2.Picture = LoadPicture("C:\Users\Admin\Desktop\PAVAI IT FINAL TESTING\ENERGY STORAGE ANALYSIS\vertical1 (5).jpg")
+Sleep 30
+Picture2.Picture = LoadPicture("C:\Users\Admin\Desktop\PAVAI IT FINAL TESTING\ENERGY STORAGE ANALYSIS\vertical1 (6).jpg")
+Sleep 30
+Picture2.Picture = LoadPicture("C:\Users\Admin\Desktop\PAVAI IT FINAL TESTING\ENERGY STORAGE ANALYSIS\vertical1 (7).jpg")
+Sleep 30
+Picture2.Picture = LoadPicture("C:\Users\Admin\Desktop\PAVAI IT FINAL TESTING\ENERGY STORAGE ANALYSIS\vertical1 (8).jpg")
+Sleep 30
+Picture2.Picture = LoadPicture("C:\Users\Admin\Desktop\PAVAI IT FINAL 
+
+TESTING\ENERGY STORAGE ANALYSIS\vertical1 (9).jpg")
+
+Sleep 30
+Picture2.Picture = LoadPicture("C:\Users\Admin\Desktop\PAVAI IT FINAL
+
+TESTING\ENERGY STORAGE ANALYSIS\vertical1 (10).jpg")
+Sleep 30
+Picture2.Picture = LoadPicture("C:\Users\Admin\Desktop\PAVAI IT FINAL TESTING\ENERGY STORAGE ANALYSIS\vertical1 (11).jpg")
+Sleep 30
+Picture2.Picture = LoadPicture("C:\Users\Admin\Desktop\PAVAI IT FINAL TESTING\ENERGY STORAGE ANALYSIS\vertical1 (12).jpg")
+Sleep 30
+Picture2.Picture = LoadPicture("C:\Users\Admin\Desktop\PAVAI IT FINAL TESTING\ENERGY STORAGE ANALYSIS\vertical1 (13).jpg")
+Sleep 30
+Picture2.Picture = LoadPicture("C:\Users\Admin\Desktop\PAVAI IT FINAL TESTING\ENERGY STORAGE ANALYSIS\vertical1 (14).jpg")
+Sleep 10
+Picture2.Picture = LoadPicture("C:\Users\Admin\Desktop\PAVAI IT FINAL TESTING\ENERGY STORAGE ANALYSIS\vertical1 (15).jpg")
+Sleep 10
+Picture2.Picture = LoadPicture("C:\Users\Admin\Desktop\PAVAI IT FINAL TESTING\ENERGY STORAGE ANALYSIS\vertical1 (16).jpg")
+Sleep 10
+Picture2.Picture = LoadPicture("C:\Users\Admin\Desktop\PAVAI IT FINAL TESTING\ENERGY STORAGE ANALYSIS\vertical1 (17).jpg")
+Sleep 10
+Picture2.Picture = LoadPicture("C:\Users\Admin\Desktop\PAVAI IT FINAL TESTING\ENERGY STORAGE ANALYSIS\vertical1 (18).jpg")
+Sleep 10
+Picture2.Picture = LoadPicture("C:\Users\Admin\Desktop\PAVAI IT FINAL TESTING\ENERGY STORAGE ANALYSIS\vertical1 (19).jpg")
+Sleep 10
+Picture2.Picture = LoadPicture("C:\Users\Admin\Desktop\PAVAI IT FINAL TESTING\ENERGY STORAGE ANALYSIS\vertical1 (20).jpg")
+Sleep 100
+Picture2.Picture = LoadPicture("C:\Users\Admin\Desktop\PAVAI IT FINAL TESTING\ENERGY STORAGE ANALYSIS\vertical1 (21).jpg")
+Sleep 10
+Picture2.Picture = LoadPicture("C:\Users\Admin\Desktop\PAVAI IT FINAL TESTING\ENERGY STORAGE ANALYSIS\vertical1 (22).jpg")
+Sleep 10
+
+
+Picture2.Picture = LoadPicture("C:\Users\Admin\Desktop\PAVAI IT FINAL TESTING\ENERGY STORAGE ANALYSIS\vertical1 (23).jpg")
+
+Sleep 10
+Picture2.Picture = LoadPicture("C:\Users\Admin\Desktop\PAVAI IT FINAL TESTING\ENERGY STORAGE ANALYSIS\vertical1 (24).jpg")
+
+Sleep 10
+Picture2.Picture = LoadPicture("C:\Users\Admin\Desktop\PAVAI IT FINAL TESTING\ENERGY STORAGE ANALYSIS\vertical1 (25).jpg")
+Sleep 10
+Picture2.Picture = LoadPicture("C:\Users\Admin\Desktop\PAVAI IT FINAL TESTING\ENERGY STORAGE ANALYSIS\vertical1 (26).jpg")
+Sleep 10
+  ElseIf Text4.Text < 30 Then
+  Picture2.Picture = LoadPicture
+  End If
+
+End Sub
+
+Function Analog(no As Integer)
+    MSComm1.Output = "{4" & CStr(no) & "}"
+    Sleep 30
+    buf = MSComm1.Input
+    If (buf <> "") Then
+        Analog = CInt(Mid$(buf, 2, 4))
+    Else
+        Analog = 0
+    End If
+End Function
+
+Private Sub Timer2_Timer()
+Label21.Caption = Date
+Label22.Caption = Time
+
+
+ex = sx + 100
+ey = Line2.Y2 - (Val(Text2.Text) / 100) * (Line2.Y2 - Line2.Y1)
+Line (sx, sy)-(ex, ey), vbBlue
+sx = ex
+sy = ey
+If (sx > Line1.X2 - 50) Then
+
+Line (Line1.X1, Line2.Y1)-(Line1.X2, Line2.Y2), Me.BackColor, BF
+sx = Line1.X1
+sy = ey
+Line1.Refresh
+
+Line2.Refresh
+End If
+
+ex1 = sx1 + 100
+
+ey1 = Line4.Y2 - (Val(Text4.Text) / 100) * (Line4.Y2 - Line4.Y1)
+Line (sx1, sy1)-(ex1, ey1), vbBlue
+sx1 = ex1
+sy1 = ey1
+If (sx1 > Line3.X2 - 50) Then
+Line (Line3.X1, Line4.Y1)-(Line3.X2, Line4.Y2), Me.BackColor, BF
+sx1 = Line3.X1
+sy1 = ey1
+Line3.Refresh
+Line4.Refresh
+End If
+End Sub
+
+
+Private Declare Sub Sleep Lib "kernel32" (ByVal dwMilliseconds As Long)
+Dim LUX1 As Integer, VOL1 As Integer, CUR1 As Integer, POW1 As Integer
+Dim WIN2 As Integer, VOL2 As Integer, CUR2 As Integer, POW2 As Integer,
+          POW, POW3, POW4 As Integer
+Dim NET, TV As Integer
+Dim Buf As String, Out As Integer
+Dim SX, SY, EX, EY, SX1, SY1, EX1, EY1 As Integer
+
+Private Sub Command1_Click()
+Me.Hide
+Form2.Show
+End Sub
+
+Private Sub Form_Load()
+    MSComm1.PortOpen = True
+    MSComm1.Output = "{27}"
+    Sleep 100
+    MSComm1.Output = "{1C80}"
+    Sleep 100
+  
+  MSComm1.Output = "{1D00}"
+    Sleep 100
+    MSComm1.Output = "{5DFF}"
+    Sleep 100
+ 
+   MSComm1.Output = "{5C80}"
+Sleep 100
+    Out = &H0
+    SX = 1320
+    EX = 7800
+    SY = 1680
+   
+    EY = 5760
+    SX1 = 10680
+    EX1 = 17400
+    SY1 = 1680
+    EY1 = 5760
+    Form2.Data1.DatabaseName = App.Path & "\HYBRID.mdb"
+    Form2.Data1.RecordSource = "TABLE"
+POW = 0
+POW2 = 0
+
+End Sub
+
+Private Sub Form_Unload(Cancel As Integer)
+  End
+End Sub
+
+Private Sub Timer1_Timer()
+    LUX1 = Analog(5) / 30
+    VOL1 = Analog(3)
+    CUR1 = Analog(4)
+    
+    WIN2 = Analog(7) / 20
+    VOL2 = Analog(7)
+   CUR2 = Analog(4)
+     VOL1 = VOL1 / 20
+     LIGHT.Text = LUX1
+     VOLTAGE1.Text = VOL1
+     VOL2 = VOL2 / 20
+     WIND.Text = WIN2
+     If CUR2 < 0 Then
+     CUR2 = 0
+
+     End If
+     If CUR1 < 0 Then
+     CUR1 = 0
+     End If
+     VOLTAGE2.Text = VOL2
+     CURRENT1.Text = CUR1
+     
+CURRENT2.Text = CUR2
+     
+    '====================================================
+    POW1 = (LUX1 * CUR1) / 36
+POW3 = POW3 + POW1
+    POWER1.Text = POW3
+
+POWER1.Text = POW1
+
+    POW2 = (VOL2 * CUR2) / 36
+ POW4 = POW4 + POW2
+    POWER2.Text = POW4
+POWER2.Text = POW2
+'\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+    POW = POW + (POW1 + POW2)
+    NETP = POW
+    '====================
+
+    '***************************************************
+    
+    EX = SX + 50
+    EX1 = SX1 + 50
+    EY = 5760 - (LIGHT.Text / 20) * (5760 - 1680)
+        EY1 = 5760 - (VOLTAGE2.Text / 20) * (5760 - 1680)
+    Line (SX, SY)-(EX, EY), vbRed
+        Line (SX1, SY1)-(EX1, EY1), vbRed
+    SX = EX
+    SY = EY
+     SX1 = EX1
+    SY1 = EY1
+    If EX > 7700 Then
+    Line (1320, 1680)-(7800, 5760), Me.BackColor, BF
+    l1.Refresh
+    l2.Refresh
+    l5.Refresh
+    l7.Refresh
+
+    SX = 1320
+    End If
+     If EX1 > 17300 Then
+    Line (10680, 1680)-(17400, 5760), Me.BackColor, BF
+    l3.Refresh
+    l4.Refresh
+  
+  l6.Refresh
+
+    l8.Refresh
+    SX1 = 10680
+    End If
+    
+    '====================
+    
+
+
+    D.Caption = Date
+    T.Caption = Time
+    TV = (LUX1) / 2
+    If TV < 3 Then
+        Out = Out Or &H1
+        Shape1.FillColor = vbGreen
+    Else
+        Out = Out And &HE
+        Shape1.FillColor = vbRed
+    End If
+    If TV >= 3 And TV <= 6 Then
+        Out = Out Or &H2
+        Shape2.FillColor = vbGreen
+    Else
+        Out = Out And &HD
+        Shape2.FillColor = vbRed
+    End If
+    If TV > 6 And TV < 12 Then
+        Out = Out Or &H4
+        Shape3.FillColor = vbGreen
+    Else
+        Out = Out And &HB
+        Shape3.FillColor = vbRed
+    End If
+    If Val(LIGHT.Text) > 100 And Val(VOLTAGE1.Text) < 3 Then
+       Out = Out Or &H8
+   
+ Else
+     Out = Out And &H7
+
+    End If
+    MSComm1.Output = "{5D0" & CStr(Hex(Out)) & "}"
+    Sleep 100
+
+End Sub
+
+
+Function Analog(no As Integer)
+    MSComm1.Output = "{4" & CStr(no) & "}"
+    Sleep 100
+    Buf = MSComm1.Input
+    If (Buf <> "") Then
+        Analog = CInt(Mid$(Buf, 2, 4))
+    Else
+  
+      Analog = 0
+    End If
+End Function
+
+
+Private Sub Timer2_Timer()
+Form2.Data1.Recordset.AddNew
+Form2.Data1.Recordset.Fields(0) = Date
+Form2.Data1.Recordset.Fields(1) = Time
+Form2.Data1.Recordset.Fields(2) = VOLTAGE1.Text
+Form2.Data1.Recordset.Fields(3) = CURRENT1.Text
+Form2.Data1.Recordset.Fields(4) = LIGHT.Text
+Form2.Data1.Recordset.Fields(5) = POWER1.Text
+Form2.Data1.Recordset.Fields(6) = VOLTAGE2.Text
+Form2.Data1.Recordset.Fields(7) = CURRENT2.Text
+Form2.Data1.Recordset.Fields(8) = WIND.Text
+Form2.Data1.Recordset.Fields(9) = POWER2.Text
+Form2.Data1.Recordset.Fields(10) = NETP.Text
+
+Form2.Data1.Recordset.Update
+Form2.Data1.Refresh
+
+End Sub
